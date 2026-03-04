@@ -1,0 +1,65 @@
+# Sample DCR configuration — Generic Residential Authority
+# Real-world plausible values for Indian residential development regulations
+
+version: "1.0.0"
+authority: "Sample Residential Authority"
+effective_date: "2024-01-01"
+
+rules:
+  - rule_id: "FSI-R1"
+    name: "Floor Space Index — Residential Zone R1"
+    description: "Maximum FSI permissible for residential construction in R1 zone"
+    rule_type: "FSI"
+    threshold: 1.0
+    unit: "ratio"
+    zone_applicability: ["R1"]
+    tolerance: 0.0
+
+  - rule_id: "GC-R1"
+    name: "Ground Coverage — Residential Zone R1"
+    description: "Maximum permissible ground coverage as percentage of plot area"
+    rule_type: "GROUND_COVERAGE"
+    threshold: 40.0
+    unit: "%"
+    zone_applicability: ["R1"]
+    tolerance: 0.5
+
+  - rule_id: "SETBACK-FRONT-R1"
+    name: "Front Setback — Residential Zone R1"
+    description: "Minimum front setback distance from plot boundary to building edge"
+    rule_type: "SETBACK_FRONT"
+    threshold: 4.5
+    unit: "m"
+    zone_applicability: ["R1"]
+    tolerance: 0.1
+
+  - rule_id: "SETBACK-SIDE-R1"
+    name: "Side Setback — Residential Zone R1"
+    description: "Minimum side setback distance"
+    rule_type: "SETBACK_SIDE"
+    threshold: 1.5
+    unit: "m"
+    zone_applicability: ["R1"]
+    tolerance: 0.1
+
+  - rule_id: "SETBACK-REAR-R1"
+    name: "Rear Setback — Residential Zone R1"
+    description: "Minimum rear setback distance"
+    rule_type: "SETBACK_REAR"
+    threshold: 3.0
+    unit: "m"
+    zone_applicability: ["R1"]
+    tolerance: 0.1
+
+  - rule_id: "PARKING-R1"
+    name: "Parking Ratio — Residential Zone R1"
+    description: "Minimum parking spaces per 100 sqm of carpet area"
+    rule_type: "PARKING_RATIO"
+    threshold: 1.5
+    unit: "spaces/100sqm"
+    zone_applicability: ["R1"]
+    tolerance: 0.0
+
+metadata:
+  source: "Sample Residential Building Bylaws"
+  jurisdiction: "India (generic)"

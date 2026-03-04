@@ -1,0 +1,25 @@
+# DCR Configuration Schema — lcs-cad-mcp
+# This file documents all supported fields for authority DCR rule configs.
+# Load with: config_load(config_path="path/to/config.yaml")
+#
+# Zone codes: Authority-specific (e.g. R1=Residential-1, C1=Commercial-1, M1=Mixed-1)
+# Units: sqm (square metres), m (metres), ratio (dimensionless), % (percentage)
+# Versioning: Use semantic versioning (major.minor.patch)
+
+version: "1.0.0"       # required: str — semver of this config
+authority: "AUTHORITY" # required: str — local authority name/code
+effective_date: "2024-01-01"  # required: str — ISO 8601 date
+
+rules:                  # required: list[DCRRule] — at least 1 rule
+  - rule_id: "FSI-R1"   # required: str — unique across config
+    name: "FSI Limit"   # required: str
+    description: "Floor Space Index limit for residential zones"  # optional
+    rule_type: "FSI"    # required: FSI|GROUND_COVERAGE|SETBACK_FRONT|SETBACK_SIDE|SETBACK_REAR|PARKING_RATIO|HEIGHT_RESTRICTION|OPEN_SPACE
+    threshold: 1.5      # required: float >= 0
+    unit: "ratio"       # required: str — unit of threshold
+    zone_applicability: # required: list[str] — at least 1 zone
+      - "R1"
+    tolerance: 0.0      # optional: float — allowable deviation
+
+metadata:              # optional: dict[str,str]
+  source: "Authority DCR 2024"
