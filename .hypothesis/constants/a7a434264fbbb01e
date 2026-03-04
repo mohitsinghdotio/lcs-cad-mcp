@@ -1,4 +1,0 @@
-# file: /Users/mohit.singh2/Documents/study material/LCS/lcs-cad-mcp/src/lcs_cad_mcp/backends/ezdxf_backend.py
-# hypothesis_version: 6.151.9
-
-[0.0, 0.25, '  audit: %s', '$EXTMAX', '$EXTMIN', '$INSUNITS', '.dwg', '0', 'ARC', 'CIRCLE', 'Continuous', 'INSERT', 'LINE', 'LWPOLYLINE', 'No drawing open.', 'R2018', 'TEXT', 'Untitled', 'block_name', 'center', 'closed', 'copied_from', 'delta', 'end', 'end_angle', 'height', 'imperial', 'insert', 'layer', 'linetype', 'metric', 'points', 'position', 'radius', 'scale', 'start', 'start_angle', 'text', 'xscale', 'yscale']

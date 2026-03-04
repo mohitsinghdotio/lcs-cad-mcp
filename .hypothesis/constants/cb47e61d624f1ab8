@@ -1,4 +1,0 @@
-# file: /Users/mohit.singh2/Documents/study material/LCS/lcs-cad-mcp/src/lcs_cad_mcp/modules/__init__.py
-# hypothesis_version: 6.151.9
-
-['area', 'autodcr', 'cad', 'config', 'entities', 'layers', 'predcr', 'reports', 'verification', 'workflow']

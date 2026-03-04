@@ -17,3 +17,6 @@ build/
 .env
 
 # NOTE: uv.lock is intentionally NOT gitignored — it is the reproducibility guarantee
+
+# Hypothesis test artifacts
+.hypothesis/
