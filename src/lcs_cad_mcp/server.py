@@ -1,4 +1,5 @@
 """FastMCP server instance and lifespan configuration."""
+import sys
 from contextlib import asynccontextmanager
 from fastmcp import FastMCP
 from lcs_cad_mcp.settings import Settings
@@ -11,9 +12,9 @@ async def lifespan(app: FastMCP):
     """Server startup / teardown hook."""
     try:
         settings = Settings()
-        print(f"lcs-cad-mcp starting — backend={settings.cad_backend}", flush=True)
+        print(f"lcs-cad-mcp starting — backend={settings.cad_backend}", file=sys.stderr, flush=True)
     except Exception:
-        print("lcs-cad-mcp starting — (settings not configured)", flush=True)
+        print("lcs-cad-mcp starting — (settings not configured)", file=sys.stderr, flush=True)
     yield
     # Future: clean up resources here
 

@@ -1,0 +1,23 @@
+services:
+  lcs-cad-mcp:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./dcr_configs:/data/configs:ro
+      - ./archive:/data/archive
+    environment:
+      MCP_TRANSPORT: sse
+      MCP_SSE_HOST: 0.0.0.0
+      MCP_SSE_PORT: 8000
+      CAD_BACKEND: ezdxf
+      DCR_CONFIG_PATH: /data/configs/sample-residential.yaml
+      ARCHIVE_PATH: /data/archive
+      LOG_LEVEL: INFO
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.create_connection(('localhost',8000),2); s.close()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
