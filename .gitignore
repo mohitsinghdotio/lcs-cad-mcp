@@ -3,3 +3,17 @@
 
 # macOS
 .DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+
+# NOTE: uv.lock is intentionally NOT gitignored — it is the reproducibility guarantee

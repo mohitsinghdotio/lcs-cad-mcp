@@ -1,0 +1,4 @@
+# file: /Users/mohit.singh2/Documents/study material/LCS/lcs-cad-mcp/src/lcs_cad_mcp/modules/entities/schemas.py
+# hypothesis_version: 6.151.9
+
+[0.0, 1.0, 2.5, 'Center point [x, y].', 'End point [x, y].', 'Start point [x, y].', 'Target layer name.', 'Text content to add.']

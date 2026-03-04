@@ -1,0 +1,139 @@
+# generated: 2026-03-04
+# project: lcs-cad-mcp
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-03-04
+project: lcs-cad-mcp
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  # ── Epic 1: MCP Server Foundation ──────────────────────────────────────
+  epic-1: in-progress
+  1-1-project-scaffold-dependency-setup: review
+  1-2-mcp-server-core-stdio-transport: review
+  1-3-sse-transport-support: review
+  1-4-structured-error-response-contract: review
+  1-5-pydantic-input-validation-framework: in-progress
+  epic-1-retrospective: optional
+
+  # ── Epic 2: CAD Interface Layer ─────────────────────────────────────────
+  epic-2: in-progress
+  2-1-cad-backend-abstraction-interface: ready-for-dev
+  2-2-ezdxf-backend-drawing-lifecycle: ready-for-dev
+  2-3-ezdxf-backend-drawing-metadata-query: ready-for-dev
+  2-4-drawing-state-snapshot-rollback: ready-for-dev
+  2-5-com-backend-drawing-lifecycle-windows: ready-for-dev
+  2-6-cad-select-backend-mcp-tool: ready-for-dev
+  epic-2-retrospective: optional
+
+  # ── Epic 3: Layer Management System ────────────────────────────────────
+  epic-3: in-progress
+  3-1-layer-data-model-registry: ready-for-dev
+  3-2-layer-create-delete-mcp-tools: ready-for-dev
+  3-3-layer-get-list-set-properties-state: ready-for-dev
+  3-4-predcr-layer-naming-validation: ready-for-dev
+  epic-3-retrospective: optional
+
+  # ── Epic 4: PreDCR Engine ───────────────────────────────────────────────
+  epic-4: in-progress
+  4-1-predcr-layer-specification-catalog: ready-for-dev
+  4-2-predcr-create-layers-mcp-tool: ready-for-dev
+  4-3-predcr-get-layer-spec-mcp-tool: ready-for-dev
+  4-4-predcr-run-setup-mcp-tool-full: ready-for-dev
+  4-5-predcr-validate-drawing-mcp-tool: ready-for-dev
+  epic-4-retrospective: optional
+
+  # ── Epic 5: Entity Management ───────────────────────────────────────────
+  epic-5: in-progress
+  5-1-entity-data-model-spatial-hierarchy: ready-for-dev
+  5-2-entity-draw-polyline-line-mcp-tools: ready-for-dev
+  5-3-entity-draw-arc-circle-mcp-tools: ready-for-dev
+  5-4-entity-add-text-insert-block-mcp: ready-for-dev
+  5-5-entity-move-copy-delete-change-layer: ready-for-dev
+  5-6-entity-query-mcp-tool: ready-for-dev
+  5-7-entity-close-polyline-mcp-tool: ready-for-dev
+  epic-5-retrospective: optional
+
+  # ── Epic 6: Verification Engine ────────────────────────────────────────
+  epic-6: in-progress
+  6-1-closure-verification-engine: ready-for-dev
+  6-2-containment-verification-engine: ready-for-dev
+  6-3-naming-validation-engine: ready-for-dev
+  6-4-minimum-entity-count-verification: ready-for-dev
+  6-5-verify-all-mcp-tool-full-verification: ready-for-dev
+  epic-6-retrospective: optional
+
+  # ── Epic 7: DCR Rule Config System ─────────────────────────────────────
+  epic-7: in-progress
+  7-1-dcr-rule-config-schema-pydantic-models: ready-for-dev
+  7-2-config-load-mcp-tool-config-file: ready-for-dev
+  7-3-config-validate-config-get-version-tools: ready-for-dev
+  epic-7-retrospective: optional
+
+  # ── Epic 8: Area Computation Engine ────────────────────────────────────
+  epic-8: in-progress
+  8-1-shapely-geometry-integration-polygon: ready-for-dev
+  8-2-area-compute-plot-mcp-tool: ready-for-dev
+  8-3-area-compute-builtup-carpet-mcp-tools: ready-for-dev
+  8-4-area-compute-fsi-coverage-all-tools: ready-for-dev
+  epic-8-retrospective: optional
+
+  # ── Epic 9: AutoDCR Scrutiny Engine ────────────────────────────────────
+  epic-9: in-progress
+  9-1-rule-evaluation-engine-framework: ready-for-dev
+  9-2-fsi-rule-checker: ready-for-dev
+  9-3-ground-coverage-setback-rule-checkers: ready-for-dev
+  9-4-parking-ratio-height-restriction-checkers: ready-for-dev
+  9-5-autodcr-run-scrutiny-mcp-tool-full: ready-for-dev
+  9-6-dry-run-mode-iterative-correction-loop: ready-for-dev
+  epic-9-retrospective: optional
+
+  # ── Epic 10: Report Generation ──────────────────────────────────────────
+  epic-10: in-progress
+  10-1-report-data-model-assembly: ready-for-dev
+  10-2-report-generate-pdf-mcp-tool: ready-for-dev
+  10-3-report-generate-docx-mcp-tool: ready-for-dev
+  10-4-report-generate-json-mcp-tool: ready-for-dev
+  epic-10-retrospective: optional
+
+  # ── Epic 11: Workflow Orchestration & Archival ──────────────────────────
+  epic-11: in-progress
+  11-1-sqlite-schema-orm-setup: ready-for-dev
+  11-2-scrutiny-run-archival: ready-for-dev
+  11-3-workflow-retrieve-run-mcp-tool-archive: ready-for-dev
+  11-4-workflow-get-audit-trail-mcp-tool: ready-for-dev
+  11-5-workflow-run-pipeline-mcp-tool-end-to-end: ready-for-dev
+  epic-11-retrospective: optional
