@@ -1,0 +1,4 @@
+# file: /Users/mohit.singh2/Documents/study material/LCS/lcs-cad-mcp/src/lcs_cad_mcp/modules/cad/tools.py
+# hypothesis_version: 6.151.9
+
+['backend', 'com', 'dxf_version', 'ezdxf', 'name', 'path', 'read_only', 'status', 'stub', 'units']

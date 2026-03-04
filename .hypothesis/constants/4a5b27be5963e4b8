@@ -1,0 +1,4 @@
+# file: /Users/mohit.singh2/Documents/study material/LCS/lcs-cad-mcp/src/lcs_cad_mcp/rule_engine/models.py
+# hypothesis_version: 6.151.9
+
+[0.0, 100, 'FSI', 'GROUND_COVERAGE', 'HEIGHT_RESTRICTION', 'OPEN_SPACE', 'PARKING_RATIO', 'SETBACK_FRONT', 'SETBACK_REAR', 'SETBACK_SIDE', 'after', 'deviation', 'fail', 'pass', 'threshold']

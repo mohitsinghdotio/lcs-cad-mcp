@@ -1,4 +1,5 @@
 """Pydantic v2 input/output schemas for the cad module."""
+from typing import Literal
 from pydantic import BaseModel, Field, ConfigDict
 
 
@@ -14,10 +15,18 @@ class CadPingInput(BaseModel):
     model_config = ConfigDict(frozen=True)
 
 
+class CadNewDrawingInput(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True, frozen=True)
+
+    name: str = Field("Untitled", description="Display name for the new drawing.")
+    units: Literal["metric", "imperial"] = Field("metric", description="Unit system: 'metric' (mm) or 'imperial' (inches).")
+
+
 class CadSaveDrawingInput(BaseModel):
     model_config = ConfigDict(str_strip_whitespace=True, frozen=True)
 
-    path: str | None = Field(None, description="Optional path to save the drawing. If None, saves to the current path.")
+    path: str = Field(..., description="Absolute path to save the drawing file.")
+    dxf_version: Literal["R12", "R2000", "R2007", "R2010", "R2013", "R2018"] = Field("R2018", description="Output DXF version.")
 
 
 class CadCloseDrawingInput(BaseModel):
