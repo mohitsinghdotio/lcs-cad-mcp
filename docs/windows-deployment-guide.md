@@ -118,12 +118,13 @@ MCP_TRANSPORT=stdio
 uv run python -m lcs_cad_mcp
 ```
 
-Expected output:
+Expected stderr output (startup messages go to stderr, not stdout):
 ```
 Starting lcs-cad-mcp transport=stdio
 lcs-cad-mcp starting — backend=ezdxf
 ```
 
+The process will wait silently for MCP client input — that is normal for stdio mode.
 Press `Ctrl+C` to stop.
 
 ---
@@ -142,19 +143,29 @@ Open it in Notepad (or VS Code). Add the `lcs-cad-mcp` entry under `mcpServers`:
 {
   "mcpServers": {
     "lcs-cad-mcp": {
-      "command": "uv",
+      "command": "C:\\Users\\<YourUsername>\\.local\\bin\\uv.exe",
       "args": [
+        "run",
         "--project", "C:\\lcs-cad-mcp",
-        "run", "python", "-m", "lcs_cad_mcp"
+        "python", "-m", "lcs_cad_mcp"
       ],
       "env": {
         "DCR_CONFIG_PATH": "C:\\lcs-cad-mcp\\configs\\dcr-rules.yaml",
         "ARCHIVE_PATH":    "C:\\lcs-cad-mcp\\archive",
-        "CAD_BACKEND":     "ezdxf"
+        "CAD_BACKEND":     "ezdxf",
+        "MCP_TRANSPORT":   "stdio"
       }
     }
   }
 }
+```
+
+> **Important:** Replace `<YourUsername>` with your actual Windows username.
+> Claude Desktop uses a restricted PATH — `"uv"` alone will not be found. You must use the full path to `uv.exe`.
+
+To find your exact `uv.exe` path, run in PowerShell:
+```powershell
+(Get-Command uv).Source
 ```
 
 > Use double backslashes (`\\`) inside JSON strings.
