@@ -2,10 +2,9 @@
 
 Step-by-step guide for deploying `lcs-cad-mcp` on a Windows machine with AutoCAD installed.
 
-> **Note on COM backend:** The AutoCAD COM backend (`CAD_BACKEND=com`) is scaffolded but not yet
-> fully implemented. For production use, set `CAD_BACKEND=ezdxf` — it reads/writes `.dwg`/`.dxf`
-> files directly without requiring AutoCAD to be running. The COM backend will be functional in a
-> future release.
+> **Two backends available:**
+> - `CAD_BACKEND=ezdxf` — cross-platform, reads/writes `.dxf` files directly. AutoCAD not required.
+> - `CAD_BACKEND=com` — connects to a running AutoCAD instance on Windows via COM automation. Requires AutoCAD 2018+ and `pywin32`.
 
 ---
 
@@ -118,12 +117,13 @@ MCP_TRANSPORT=stdio
 uv run python -m lcs_cad_mcp
 ```
 
-Expected output:
+Expected stderr output (startup messages go to stderr, not stdout):
 ```
 Starting lcs-cad-mcp transport=stdio
 lcs-cad-mcp starting — backend=ezdxf
 ```
 
+The process will wait silently for MCP client input — that is normal for stdio mode.
 Press `Ctrl+C` to stop.
 
 ---
@@ -142,19 +142,29 @@ Open it in Notepad (or VS Code). Add the `lcs-cad-mcp` entry under `mcpServers`:
 {
   "mcpServers": {
     "lcs-cad-mcp": {
-      "command": "uv",
+      "command": "C:\\Users\\<YourUsername>\\.local\\bin\\uv.exe",
       "args": [
+        "run",
         "--project", "C:\\lcs-cad-mcp",
-        "run", "python", "-m", "lcs_cad_mcp"
+        "python", "-m", "lcs_cad_mcp"
       ],
       "env": {
         "DCR_CONFIG_PATH": "C:\\lcs-cad-mcp\\configs\\dcr-rules.yaml",
         "ARCHIVE_PATH":    "C:\\lcs-cad-mcp\\archive",
-        "CAD_BACKEND":     "ezdxf"
+        "CAD_BACKEND":     "ezdxf",
+        "MCP_TRANSPORT":   "stdio"
       }
     }
   }
 }
+```
+
+> **Important:** Replace `<YourUsername>` with your actual Windows username.
+> Claude Desktop uses a restricted PATH — `"uv"` alone will not be found. You must use the full path to `uv.exe`.
+
+To find your exact `uv.exe` path, run in PowerShell:
+```powershell
+(Get-Command uv).Source
 ```
 
 > Use double backslashes (`\\`) inside JSON strings.
@@ -221,7 +231,7 @@ nssm start lcs-cad-mcp
 | `DCR_CONFIG_PATH` not found error | Path typo in `.env` or JSON | Verify the path exists; use forward slashes |
 | Claude Desktop shows no tools | Config JSON syntax error | Validate JSON at jsonlint.com |
 | `ModuleNotFoundError: win32com` | pywin32 not installed | `uv run pip install pywin32` |
-| COM backend raises `BACKEND_UNAVAILABLE` | Not yet implemented | Set `CAD_BACKEND=ezdxf` — COM is a future feature |
+| COM backend raises `BACKEND_UNAVAILABLE` | AutoCAD not running or pywin32 missing | Start AutoCAD first, then `uv run pip install pywin32` |
 | Server exits immediately in stdio | No client connected | Normal — stdio mode waits for MCP client input |
 
 ---
